@@ -1,0 +1,1 @@
+.grid{display:grid;grid-gap:1px;grid-template-columns:repeat(3,1fr)}.square{width:100px;height:100px;font-size:5rem;color:#e8e5e5;border:1px solid #000}.square_o{background-color:#57da15}.square_x{background-color:crimson}.reset{margin-top:2rem;background-color:aqua;border:none;border-radius:6px;padding:1rem;cursor:pointer}.reset,p{font-size:2rem}
