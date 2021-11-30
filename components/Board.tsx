@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Square } from "./Square";
 type Player = "X" | "O" | "BOTH" | null;
 
-const calculateWinner = (squares: Player) => {
+const calculateWinner = (squares: Player[]) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -15,7 +15,12 @@ const calculateWinner = (squares: Player) => {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+    if (
+      squares &&
+      squares[a] &&
+      squares[a] === squares[b] &&
+      squares[a] === squares[c]
+    ) {
       return squares[a];
     }
   }
@@ -23,7 +28,7 @@ const calculateWinner = (squares: Player) => {
 };
 
 export const Board = () => {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [squares, setSquares] = useState<Player[]>(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState<"X" | "O">(
     Math.round(Math.random() * 1) === 1 ? "X" : "O"
   );
@@ -58,10 +63,10 @@ export const Board = () => {
 
   return (
     <div>
-      {!winner && <p>Hey {currentPlayer}, it's your turn</p>}
+      {!winner && <p>Hey {currentPlayer}, it is your turn</p>}
       {winner && winner !== "BOTH" && <p>Congratulations {winner}</p>}
       {winner && winner === "BOTH" && (
-        <p>Congratulations you're both winners</p>
+        <p>Congratulations you are both winners</p>
       )}
 
       <div className="grid">
